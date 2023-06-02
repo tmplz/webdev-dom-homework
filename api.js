@@ -23,7 +23,7 @@ const getComments = () => {
       });
 
         comments = appComments;
-        renderComments();
+        //renderComments();
       })
 };
 
@@ -60,7 +60,7 @@ const postComments = () => {
     console.warn(error);
   });
     
-    renderComments();
+    //renderComments();
 };
 
 export { getComments, postComments };

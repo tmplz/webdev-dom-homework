@@ -2,11 +2,17 @@
 
 import { comments } from "./api.js";
 import { renderComments } from "./renderComments.js";
+import { getComments } from "./api.js";
+import { postComments } from "./api.js";
 
 
 const nameInputElement = document.getElementById("name-input");
 const textInputElement = document.getElementById("text-input");
 const buttonElement = document.getElementById("add-button");
+
+getComments();
+
+renderComments();
 
 export const sanitizeHtml = (htmlString) => {
     return htmlString.replaceAll("<", "&lt;").replaceAll(">", "&gt;");

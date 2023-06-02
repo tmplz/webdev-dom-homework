@@ -1,6 +1,6 @@
 import { comments } from "./api.js";
-import { initLikesButtonListeners } from "./main.js";
-import { initQuoteCommentListeners } from "./main.js";
+//import { initLikesButtonListeners } from "./main.js";
+//import { initQuoteCommentListeners } from "./main.js";
 
 const listElement = document.getElementById("list-comments");
 
@@ -34,9 +34,9 @@ const renderComments = () => {
 
     listElement.classList.add('comments');
 
-    initLikesButtonListeners();
-    initQuoteCommentListeners();
+    //initLikesButtonListeners();
+    //initQuoteCommentListeners();
 };
 
-export {renderComments}
+export {renderComments};
 
