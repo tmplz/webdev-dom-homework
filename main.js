@@ -1,7 +1,6 @@
 "use strict";
 
 import { comments } from "./api.js";
-//import { renderComments } from "./renderComments.js";
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
 
@@ -29,7 +28,6 @@ export const initLikesButtonListeners = () => {
       comment.likes = comment.isLiked ? comment.likes - 1 : comment.likes + 1;
       comment.isLiked = !comment.isLiked;
 
-      //renderComments();
       });
     };
 }
@@ -41,7 +39,6 @@ export const initQuoteCommentListeners = () => {
       quoteCommentElement.addEventListener('click', () => {
         document.getElementById("text-input").value = quoteCommentElement.dataset.comment;
 
-        //renderComments();
       });
     };
 }

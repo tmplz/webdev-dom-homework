@@ -1,6 +1,6 @@
 export let comments = [];
 
-import { renderComments } from "./renderComments";
+import { renderComments } from "./renderComments.js";
 
 const nameInputElement = document.getElementById("name-input");
 const textInputElement = document.getElementById("text-input");
