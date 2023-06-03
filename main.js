@@ -3,6 +3,7 @@
 import { comments } from "./api.js";
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
+import { renderComments } from "./renderComments.js";
 
 
 const nameInputElement = document.getElementById("name-input");
@@ -28,6 +29,7 @@ export const initLikesButtonListeners = () => {
       comment.likes = comment.isLiked ? comment.likes - 1 : comment.likes + 1;
       comment.isLiked = !comment.isLiked;
 
+      renderComments();
       });
     };
 }
