@@ -1,10 +1,11 @@
 import { comments } from "./api.js";
+import { sanitizeHtml } from "./main.js";
 //import { initLikesButtonListeners } from "./main.js";
 //import { initQuoteCommentListeners } from "./main.js";
 
 const listElement = document.getElementById("list-comments");
 
-const renderComments = () => {
+export const renderComments = () => {
     listElement.classList.remove('comments');
     
     const commentsHtml = comments.map((comment, index) => {
@@ -38,5 +39,4 @@ const renderComments = () => {
     //initQuoteCommentListeners();
 };
 
-export {renderComments};
 

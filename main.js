@@ -1,7 +1,7 @@
 "use strict";
 
 import { comments } from "./api.js";
-import { renderComments } from "./renderComments.js";
+//import { renderComments } from "./renderComments.js";
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
 
@@ -12,7 +12,6 @@ const buttonElement = document.getElementById("add-button");
 
 getComments();
 
-renderComments();
 
 export const sanitizeHtml = (htmlString) => {
     return htmlString.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -30,7 +29,7 @@ export const initLikesButtonListeners = () => {
       comment.likes = comment.isLiked ? comment.likes - 1 : comment.likes + 1;
       comment.isLiked = !comment.isLiked;
 
-      renderComments();
+      //renderComments();
       });
     };
 }
@@ -42,12 +41,11 @@ export const initQuoteCommentListeners = () => {
       quoteCommentElement.addEventListener('click', () => {
         document.getElementById("text-input").value = quoteCommentElement.dataset.comment;
 
-        renderComments();
+        //renderComments();
       });
     };
 }
 
-renderComments();
 
 buttonElement.addEventListener('click', () => {
     nameInputElement.classList.remove("error");
@@ -68,6 +66,6 @@ buttonElement.addEventListener('click', () => {
 
  
     postComments();
-    renderComments();
+    //renderComments();
 
 });

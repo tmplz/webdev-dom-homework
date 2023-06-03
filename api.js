@@ -1,10 +1,12 @@
 export let comments = [];
 
+import { renderComments } from "./renderComments";
+
 const nameInputElement = document.getElementById("name-input");
 const textInputElement = document.getElementById("text-input");
 const buttonElement = document.getElementById("add-button");
 
-const getComments = () => {
+export const getComments = () => {
     return fetch("https://webdev-hw-api.vercel.app/api/v1/dmitry-buntov/comments", {
       method: "GET"
     })
@@ -23,11 +25,11 @@ const getComments = () => {
       });
 
         comments = appComments;
-        //renderComments();
+        renderComments();
       })
 };
 
-const postComments = () => {
+export const postComments = () => {
     fetch("https://webdev-hw-api.vercel.app/api/v1/dmitry-buntov/comments", {
       method: "POST",
       body: JSON.stringify({
@@ -60,7 +62,5 @@ const postComments = () => {
     console.warn(error);
   });
     
-    //renderComments();
+    renderComments();
 };
-
-export { getComments, postComments };
