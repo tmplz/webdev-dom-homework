@@ -1,9 +1,8 @@
 "use strict";
 
-import { comments } from "./api.js";
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
-import { renderComments } from "./renderComments.js";
+import { initLikesButtonListeners } from "./initLikes.js";
 
 
 const nameInputElement = document.getElementById("name-input");
@@ -17,22 +16,9 @@ export const sanitizeHtml = (htmlString) => {
     return htmlString.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 };
 
-export const initLikesButtonListeners = () => {
-    const likesButtonElements = document.querySelectorAll('.like-button');
-    
-    for (const likesButtonElement of likesButtonElements) {
-      likesButtonElement.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const index = likesButtonElement.dataset.index;
 
-      const comment = comments[index];
-      comment.likes = comment.isLiked ? comment.likes - 1 : comment.likes + 1;
-      comment.isLiked = !comment.isLiked;
+initLikesButtonListeners();
 
-      renderComments();
-      });
-    };
-}
 
 export const initQuoteCommentListeners = () => {
     const quoteCommentElements = document.querySelectorAll('.comment');
@@ -65,6 +51,4 @@ buttonElement.addEventListener('click', () => {
 
  
     postComments();
-    //renderComments();
-
 });

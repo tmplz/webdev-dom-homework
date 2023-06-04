@@ -1,6 +1,6 @@
 import { comments } from "./api.js";
 import { sanitizeHtml } from "./main.js";
-import { initLikesButtonListeners } from "./main.js";
+import { initLikesButtonListeners } from "./initLikes.js";
 import { initQuoteCommentListeners } from "./main.js";
 
 const listElement = document.getElementById("list-comments");
