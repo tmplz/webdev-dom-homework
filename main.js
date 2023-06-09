@@ -1,5 +1,14 @@
 "use strict";
 
+//План реализации входа и регистрации:
+//* Изменить АПИ на 2ю версию
+//1. Перенести всю разметку в рендер функцию
+//2. Сделать форму входа
+//3. Сделать ее динамической
+//4. Вытащить логин компонент в отдельный модуль
+//5. Сделать форму регистрации
+//6. GitHub Pages
+
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
 import { initLikesButtonListeners } from "./initLikes.js";
