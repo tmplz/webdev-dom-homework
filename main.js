@@ -13,6 +13,7 @@
 import { getComments } from "./api.js";
 import { postComments } from "./api.js";
 import { initLikesButtonListeners } from "./initLikes.js";
+import { token } from "./api.js";
 
 
 const nameInputElement = document.getElementById("name-input");
@@ -42,23 +43,7 @@ export const initQuoteCommentListeners = () => {
 }
 
 
-buttonElement.addEventListener('click', () => {
-    nameInputElement.classList.remove("error");
-    textInputElement.classList.remove("error");
-    
-    if(nameInputElement.value === '') {
-      nameInputElement.classList.add("error");
-      return;
-    }
 
-    if(textInputElement.value === '') {
-      textInputElement.classList.add("error");
-      return;
-    }
+postComments({token});
 
-    buttonElement.disabled = true;
-    buttonElement.textContent = "Комментарий добавляется...";
 
- 
-    postComments();
-});
