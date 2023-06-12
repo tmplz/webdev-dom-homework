@@ -3,6 +3,7 @@ import { sanitizeHtml } from "./main.js";
 import { initLikesButtonListeners } from "./initLikes.js";
 import { initQuoteCommentListeners } from "./main.js";
 import { postComments } from "./api.js";
+import { token } from "./api.js";
 
 
 export const renderComments = () => {
@@ -52,8 +53,8 @@ export const renderComments = () => {
         />
         </div>
         <div class="login-form-row">
-          <button class="log-form-button" id="add-button">Войти</button>
-          <button class="reg-form-button" id="add-button">Зарегистрироваться</button>
+          <button class="add-form-button" id="log-button">Войти</button>
+          <button class="reg-form-button" id="reg-button">Зарегистрироваться</button>
         </div>
       </div>
     </div> 
@@ -85,9 +86,9 @@ export const renderComments = () => {
 
     appEL.innerHTML = appHtml;
 
-    //const listElement = document.getElementById("list-comments");
-    const nameInputElement = document.getElementById("name-input");
-    const textInputElement = document.getElementById("text-input");
+    const listElement = document.getElementById("list-comments");
+    let nameInputElement = document.getElementById("name-input");
+    let textInputElement = document.getElementById("text-input");
     const buttonElement = document.getElementById("add-button");
 
     appEL.classList.remove('comments');
@@ -111,8 +112,9 @@ export const renderComments = () => {
       buttonElement.textContent = "Комментарий добавляется...";
 
       
-      postComments();
+      postComments({ token });
     });
+
 
     initLikesButtonListeners();
     initQuoteCommentListeners();

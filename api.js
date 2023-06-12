@@ -2,6 +2,7 @@ export let comments = [];
 
 import { renderComments } from "./renderComments.js";
 
+
 const nameInputElement = document.getElementById("name-input");
 const textInputElement = document.getElementById("text-input");
 const buttonElement = document.getElementById("add-button");
@@ -36,7 +37,7 @@ export const getComments = () => {
       })
 };
 
-export const postComments = ({ token }) => {
+export const postComments = () => {
     fetch(host, {
       method: "POST",
       body: JSON.stringify({
@@ -71,8 +72,8 @@ export const postComments = ({ token }) => {
     alert(Error);
     console.warn(error);
   });
-    
-    renderComments();
+
+  renderComments();
 };
 
 

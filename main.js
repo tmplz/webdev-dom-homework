@@ -11,14 +11,14 @@
 // - GitHub Pages
 
 import { getComments } from "./api.js";
-import { postComments } from "./api.js";
+//import { postComments } from "./api.js";
 import { initLikesButtonListeners } from "./initLikes.js";
-import { token } from "./api.js";
 
 
-const nameInputElement = document.getElementById("name-input");
-const textInputElement = document.getElementById("text-input");
-const buttonElement = document.getElementById("add-button");
+
+// const nameInputElement = document.getElementById("name-input");
+// const textInputElement = document.getElementById("text-input");
+// const buttonElement = document.getElementById("add-button");
 
 getComments();
 
@@ -44,6 +44,7 @@ export const initQuoteCommentListeners = () => {
 
 
 
-postComments({token});
+//postComments();
+getComments();
 
 
