@@ -29,12 +29,27 @@ export function renderLoginComponent({ appEl, setToken, renderComments }) {
     appEl.innerHTML = appHtml;
 
     document.getElementById('log-button').addEventListener('click', () => {
+      const login = document.getElementById('login-input').value;
+      const password = document.getElementById('password-input').value;
+      
+      if(!login) {
+        alert("Введите логин");
+        return; 
+      }
+
+      if(!password) {
+        alert("Введите пароль");
+        return; 
+      }
+
       loginComments({
-        login: "admin",
-        password: "admin",
+        login: login,
+        password: password,
       }).then((user) => {
         setToken(`Bearer ${user.user.token}`);
         renderComments();
+      }).catch((error) => {
+        alert(error.message)
       })
     });
 }

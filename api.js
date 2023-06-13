@@ -3,9 +3,9 @@ export let comments = [];
 import { renderComments } from "./renderComments.js";
 
 
-const nameInputElement = document.getElementById("name-input");
-const textInputElement = document.getElementById("text-input");
-const buttonElement = document.getElementById("add-button");
+// const nameInputElement = document.getElementById("name-input");
+// const textInputElement = document.getElementById("text-input");
+// const buttonElement = document.getElementById("add-button");
 
 const host = "https://wedev-api.sky.pro/api/v2/dmitry-buntov/comments";
 let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
@@ -87,6 +87,9 @@ export function loginComments({ login, password }) {
       password,
     }),
   }).then((response) => {
+    if(response.status === 400) {
+      throw new Error("Неверный логин или пароль");
+    }
     return response.json();
   })
 }
