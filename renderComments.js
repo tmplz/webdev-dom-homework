@@ -112,7 +112,7 @@ export const renderComments = () => {
       buttonElement.textContent = "Комментарий добавляется...";
 
       
-      postComments({ token });
+      postComments();
     });
 
 

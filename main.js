@@ -3,7 +3,7 @@
 //План реализации входа и регистрации:
 // - Заменить АПИ (+)
 // - Создать форму входа (+)
-// - Перенести всю разметку в рендер функцию
+// - Перенести всю разметку в рендер функцию (+)
 // - Реализовать удаление комментов
 // - Сделать форму входа динамической
 // - Вытащить логин компонент в отдельный модуль
@@ -16,9 +16,7 @@ import { initLikesButtonListeners } from "./initLikes.js";
 
 
 
-// const nameInputElement = document.getElementById("name-input");
-// const textInputElement = document.getElementById("text-input");
-// const buttonElement = document.getElementById("add-button");
+
 
 getComments();
 

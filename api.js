@@ -38,6 +38,9 @@ export const getComments = () => {
 };
 
 export const postComments = () => {
+  const nameInputElement = document.getElementById("name-input");
+  const textInputElement = document.getElementById("text-input");
+  const buttonElement = document.getElementById("add-button");
     fetch(host, {
       method: "POST",
       body: JSON.stringify({
