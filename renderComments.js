@@ -15,7 +15,7 @@ token = null;
 export const renderComments = () => {
   const appEl = document.getElementById("app");
   if(!token) {
-    const appHtml = ` <div class="login">
+    const appHtml = ` <div class="container">
     <div class="add-form">
       <h2 class="login-title">Форма входа</h2>
       <div class="login-input-box">
