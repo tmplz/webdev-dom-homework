@@ -8,8 +8,7 @@ const textInputElement = document.getElementById("text-input");
 const buttonElement = document.getElementById("add-button");
 
 const host = "https://wedev-api.sky.pro/api/v2/dmitry-buntov/comments";
-
-export let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
+let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
 
 export const getComments = () => {
     return fetch(host, {
@@ -41,15 +40,15 @@ export const postComments = () => {
   const nameInputElement = document.getElementById("name-input");
   const textInputElement = document.getElementById("text-input");
   const buttonElement = document.getElementById("add-button");
-    fetch(host, {
+  fetch(host, {
       method: "POST",
       body: JSON.stringify({
         name: nameInputElement.value,
         text: textInputElement.value,
+      }),
       headers: {
         Authorization: token,
       },
-    }),
   })
   .then((response) => {
     if (response.status === 201) {
@@ -76,7 +75,7 @@ export const postComments = () => {
     console.warn(error);
   });
 
-  renderComments();
+  //renderComments();
 };
 
 
