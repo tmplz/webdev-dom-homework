@@ -59,26 +59,36 @@ export const renderComments = () => {
     <ul class="comments" id="list-comments">
      ${commentsHtml}  
     </ul>
-    <div class="add-form">
-      <input
-        type="text"
-        class="add-form-name"
-        id="name-input"
-        placeholder="Введите ваше имя"
-      />
-      <textarea
-        type="textarea"
-        class="add-form-text"
-        id="text-input"
-        placeholder="Введите ваш коментарий"
-        rows="4"
-      ></textarea>
-      <div class="add-form-row">
-        <button class="add-form-button" id="add-button">Написать</button>
-      </div>
-    </div>
-    </div>
-    `;
+     ${
+      token
+      ? `<div class="add-form">
+        <input
+          type="text"
+          class="add-form-name"
+          id="name-input"
+          placeholder="Введите ваше имя"
+        />
+        <textarea
+          type="textarea"
+          class="add-form-text"
+          id="text-input"
+          placeholder="Введите ваш коментарий"
+          rows="4"
+        ></textarea>
+        <div class="add-form-row">
+          <button class="add-form-button" id="add-button">Написать</button>
+        </div>
+      </div>`
+      :
+        `<a href="">
+        Войти
+        ${renderComments()}
+        </a>`
+      }
+      </div>`;
+
+    
+
     appEl.innerHTML = appHtml;
 
 
