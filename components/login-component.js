@@ -1,3 +1,5 @@
+import { loginComments } from "../api.js";
+
 export function renderLoginComponent({ appEl, setToken, renderComments }) {
     const appHtml = ` <div class="container">
     <div class="add-form">
@@ -27,7 +29,12 @@ export function renderLoginComponent({ appEl, setToken, renderComments }) {
     appEl.innerHTML = appHtml;
 
     document.getElementById('log-button').addEventListener('click', () => {
-      setToken("Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k");
-      renderComments();
+      loginComments({
+        login: "admin",
+        password: "admin",
+      }).then((user) => {
+        setToken(`Bearer ${user.user.token}`);
+        renderComments();
+      })
     });
 }
