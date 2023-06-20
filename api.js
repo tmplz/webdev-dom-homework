@@ -2,13 +2,20 @@ export let comments = [];
 
 import { renderComments } from "./renderComments.js";
 
-const nameInputElement = document.getElementById("name-input");
-const textInputElement = document.getElementById("text-input");
-const buttonElement = document.getElementById("add-button");
+
+// const nameInputElement = document.getElementById("name-input");
+// const textInputElement = document.getElementById("text-input");
+// const buttonElement = document.getElementById("add-button");
+
+const host = "https://wedev-api.sky.pro/api/v2/dmitry-buntov/comments";
+let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
 
 export const getComments = () => {
-    return fetch("https://webdev-hw-api.vercel.app/api/v1/dmitry-buntov/comments", {
-      method: "GET"
+    return fetch(host, {
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
     })
     .then((response) => {
       return response.json();
@@ -30,12 +37,18 @@ export const getComments = () => {
 };
 
 export const postComments = () => {
-    fetch("https://webdev-hw-api.vercel.app/api/v1/dmitry-buntov/comments", {
+  const nameInputElement = document.getElementById("name-input");
+  const textInputElement = document.getElementById("text-input");
+  const buttonElement = document.getElementById("add-button");
+  fetch(host, {
       method: "POST",
       body: JSON.stringify({
-      name: nameInputElement.value,
-      text: textInputElement.value,
-    }),
+        name: nameInputElement.value,
+        text: textInputElement.value,
+      }),
+      headers: {
+        Authorization: token,
+      },
   })
   .then((response) => {
     if (response.status === 201) {
@@ -50,17 +63,33 @@ export const postComments = () => {
     return getComments();
   })
   .then(() => {
-    buttonElement.disabled = false;
+    buttonElement.disabled = true;
     buttonElement.textContent = "Написать";
     nameInputElement.value = "";
     textInputElement.value = "";
   })
   .catch((error) => {
-    buttonElement.disabled = false;
+    buttonElement.disabled = true;
     buttonElement.textContent = "Написать";
     alert(Error);
     console.warn(error);
   });
-    
-    renderComments();
+
+  //renderComments();
 };
+
+
+export function loginComments({ login, password }) {
+  return fetch("https://wedev-api.sky.pro/api/user/login", {
+    method: "POST",
+    body: JSON.stringify({
+      login,
+      password,
+    }),
+  }).then((response) => {
+    if(response.status === 400) {
+      throw new Error("Неверный логин или пароль");
+    }
+    return response.json();
+  })
+}

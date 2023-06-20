@@ -1,13 +1,22 @@
 "use strict";
 
+//План реализации входа и регистрации:
+// - Заменить АПИ (+)
+// - Создать форму входа (+)
+// - Перенести всю разметку в рендер функцию (+)
+// - Сделать форму входа динамической (+)
+// - Вытащить логин компонент в отдельный модуль (+)
+// - Подключить АПИ авторизации
+// - Создать форму регистрации
+// - GitHub Pages
+
 import { getComments } from "./api.js";
-import { postComments } from "./api.js";
+//import { postComments } from "./api.js";
 import { initLikesButtonListeners } from "./initLikes.js";
 
 
-const nameInputElement = document.getElementById("name-input");
-const textInputElement = document.getElementById("text-input");
-const buttonElement = document.getElementById("add-button");
+
+
 
 getComments();
 
@@ -32,23 +41,8 @@ export const initQuoteCommentListeners = () => {
 }
 
 
-buttonElement.addEventListener('click', () => {
-    nameInputElement.classList.remove("error");
-    textInputElement.classList.remove("error");
-    
-    if(nameInputElement.value === '') {
-      nameInputElement.classList.add("error");
-      return;
-    }
 
-    if(textInputElement.value === '') {
-      textInputElement.classList.add("error");
-      return;
-    }
+//postComments();
+getComments();
 
-    buttonElement.disabled = true;
-    buttonElement.textContent = "Комментарий добавляется...";
 
- 
-    postComments();
-});
