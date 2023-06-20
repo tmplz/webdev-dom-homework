@@ -4,6 +4,7 @@ import { initLikesButtonListeners } from "./initLikes.js";
 import { initQuoteCommentListeners } from "./main.js";
 import { postComments } from "./api.js";
 import { renderLoginComponent } from "./components/login-component.js";
+import { format } from "date-fns";
 
 
 
@@ -29,14 +30,17 @@ export const renderComments = () => {
   }
 
 
+
+
   const commentsHtml = comments.map((comment, index) => {
+    const createDate = format(new Date(comment.date), 'yyyy-MM-dd hh.mm.ss');
     return `<li class="comment" data-comment="< ${comment.text} \n ${comment.name}">
       <div class="comment-header">
         <div>
           ${sanitizeHtml(comment.name)}
         </div>
         <div>
-          ${comment.date}
+          ${createDate}
         </div>
       </div>
       <div class="comment-body">
