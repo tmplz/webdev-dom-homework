@@ -8,7 +8,13 @@ import { renderComments } from "./renderComments.js";
 // const buttonElement = document.getElementById("add-button");
 
 const host = "https://wedev-api.sky.pro/api/v2/dmitry-buntov/comments";
-let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
+//let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
+
+export let token = null;
+
+export const setToken = (newToken) => {
+  token = newToken;
+}
 
 export const getComments = () => {
     return fetch(host, {
@@ -24,7 +30,7 @@ export const getComments = () => {
         const appComments = responseData.comments.map((comment) => {
         return {
           name: comment.author.name,
-          date: new Date(comment.date).toLocaleString().slice(0, -3),
+          date: new Date(comment.date),
           text: comment.text,
           likes: comment.likes,
           isLiked: false,

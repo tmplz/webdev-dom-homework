@@ -2,16 +2,13 @@ import { comments } from "./api.js";
 import { sanitizeHtml } from "./main.js";
 import { initLikesButtonListeners } from "./initLikes.js";
 import { initQuoteCommentListeners } from "./main.js";
-import { postComments } from "./api.js";
+import { postComments, setToken, token } from "./api.js";
 import { renderLoginComponent } from "./components/login-component.js";
+import { format } from "date-fns";
 
 
-
-
-let token = "Bearer asb4c4boc86gasb4c4boc86g37w3cc3bo3b83k4g37k3bk3cg3c03ck4k";
 const host = "https://wedev-api.sky.pro/api/v2/dmitry-buntov/comments";
 
-token = null;
 
 
 export const renderComments = () => {
@@ -19,9 +16,7 @@ export const renderComments = () => {
   if(!token) {
     renderLoginComponent({ 
       appEl, 
-      setToken: (newToken) => {
-        token = newToken;
-      },
+      setToken,
       renderComments,
     });
 
@@ -29,14 +24,17 @@ export const renderComments = () => {
   }
 
 
+
+
   const commentsHtml = comments.map((comment, index) => {
+    const createDate = format(new Date(comment.date), 'yyyy-MM-dd hh.mm.ss');
     return `<li class="comment" data-comment="< ${comment.text} \n ${comment.name}">
       <div class="comment-header">
         <div>
           ${sanitizeHtml(comment.name)}
         </div>
         <div>
-          ${comment.date}
+          ${createDate}
         </div>
       </div>
       <div class="comment-body">
